@@ -1,3 +1,5 @@
+import com.github.takahirom.roborazzi.ExperimentalRoborazziApi
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -41,7 +43,18 @@ android {
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
+            all {
+                it.systemProperties["robolectric.pixelCopyRenderMode"] = "hardware"
+            }
         }
+    }
+}
+
+roborazzi {
+    @OptIn(ExperimentalRoborazziApi::class)
+    generateComposePreviewRobolectricTests {
+        enable = true
+        packages = listOf("com.kktaro.roborazzipreviewsample")
     }
 }
 
@@ -61,6 +74,7 @@ dependencies {
     testImplementation(libs.androidx.espresso.core)
     testImplementation(libs.robolectric)
     testImplementation(libs.bundles.roborazzi)
+    testImplementation(libs.composablepreviewscanner)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
