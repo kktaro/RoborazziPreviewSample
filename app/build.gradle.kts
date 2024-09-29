@@ -55,6 +55,7 @@ roborazzi {
     generateComposePreviewRobolectricTests {
         enable = true
         packages = listOf("com.kktaro.roborazzipreviewsample")
+        includePrivatePreviews = true
     }
 }
 
