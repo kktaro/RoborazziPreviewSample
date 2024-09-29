@@ -56,6 +56,7 @@ roborazzi {
         enable = true
         packages = listOf("com.kktaro.roborazzipreviewsample")
         includePrivatePreviews = true
+        testerQualifiedClassName = "com.kktaro.roborazzipreviewsample.MyComposePreviewTester"
     }
 }
 
